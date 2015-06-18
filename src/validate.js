@@ -103,9 +103,9 @@ angular.module('angularPayments')
       var allowedCards = attr.allowedCards.split(",");
       
       if (allowedCards.indexOf(card.type) != -1) {
-          cardRequired = true;
+          isCardInAllowedList = true;
       }
-      var finalResult = ret && cardRequired;
+      var finalResult = ret && isCardInAllowedList;
       return finalResult;
   }
 

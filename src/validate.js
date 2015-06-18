@@ -99,8 +99,14 @@ angular.module('angularPayments')
       }
 
       ret = (ref = num.length, __indexOf.call(card.length, ref) >= 0) && (card.luhn === false || _luhnCheck(num));
-
-      return ret;
+      var isCardInAllowedList = false;
+      var allowedCards = attr.allowedCards.split(",");
+      
+      if (allowedCards.indexOf(card.type) != -1) {
+          cardRequired = true;
+      }
+      var finalResult = ret && cardRequired;
+      return finalResult;
   }
 
   _validators['expiry'] = function(val){
